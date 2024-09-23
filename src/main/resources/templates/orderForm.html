@@ -1,0 +1,102 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml"-->
+<!--      xmlns:th="http://www.thymeleaf.org">-->
+
+<!--    <head>-->
+<!--        <title>Cart Shopping</title>-->
+<!--        <link rel="stylesheet" th:href="@{/styles.css}" />-->
+<!--    </head>-->
+
+<!--    <body>-->
+<!--        <form method="POST" th:action="@{/logout}" id="logoutForm">-->
+<!--            <input type="submit" value="Logout"/>-->
+<!--        </form>-->
+
+
+
+<!--            <h1>Order your shopping cart!</h1>-->
+<!--            <img th:src="@{/images/CartShopping.PNG}"/>-->
+
+<!--            <h3>Your order information:</h3>-->
+<!--            <ul>-->
+<!--                <li> <b>Full Name: </b> <span th:text="${user.fullname}">Full name</span></li>-->
+<!--                <li> <b>Delivery Street: </b> <span th:text="${user.street}">Street</span></li>-->
+<!--                <li> <b>Delivery City: </b> <span th:text="${user.city}">City</span></li>-->
+<!--                <li> <b>Credit card number: </b> <span th:text="${user.ccNumber}">ccNumber</span></li>-->
+<!--                <li> <b>Expiration: </b> <span th:text="${user.ccExpiration}">ccExpiration</span></li>-->
+<!--                <li> <b>ccCVV: </b> <span th:text="${user.ccCVV}">ccCVV</span></li>-->
+<!--            </ul>-->
+
+<!--            <h3>Your items:</h3>-->
+<!--            <div th:each="p : ${cartDTO.items}">-->
+<!--                <ul>-->
+<!--                    <li><span th:text="${p.name}">ITEM</span>-->
+<!--                        $<span th:text="${p.price + ' * '}">ITEM</span>-->
+<!--                        <span th:text="${p.quantity}">ITEM</span>-->
+<!--                        <span th:text="${'  =  $' + (p.price * p.quantity)}">ITEM</span>-->
+
+<!--                        <form action="/orders/current" method="get" style="display:inline;">-->
+<!--                            <input type="hidden" name="productId" th:value="${p.id}"/>-->
+<!--                            <input name="quantity" th:value="${p.quantity}"/>-->
+<!--                            <input type="submit" name="Quantity" value="Quantity"/>-->
+<!--                        </form>-->
+<!--                        <form action="/orders/current" method="get" style="display:inline;">-->
+<!--                            <input type="hidden" name="productId" th:value="${p.id}"/>-->
+<!--                            <input type="submit" name="Delete" th:value="${'Delete'}"/>-->
+<!--                        </form>-->
+
+<!--                    </li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--        <form method="POST" th:action="@{/orders}" th:object="${order}"  id="orderForm">-->
+<!--            <h3><span th:text="${'Total Order :  ' + total}"></span></h3>-->
+
+<!--            <a th:href="@{/design}" id="another">Create another cart</a><br/>-->
+
+<!--            <div th:if="${#fields.hasErrors()}">-->
+<!--                <span class="validationError">-->
+<!--                Please correct the problems below and resubmit.-->
+<!--                </span>-->
+<!--            </div>-->
+
+<!--            <h2>Submit your order or change the information..</h2>-->
+<!--            <h3> Delivery Information</h3>-->
+<!--            <label for="fullname">Name: </label>-->
+<!--            <input type="text" th:field="${user.fullname}"/>-->
+<!--            <span class="validationError"-->
+<!--                  th:if="${#fields.hasErrors('fullname')}"-->
+<!--                  th:errors="*{fullname}">Name Error</span>-->
+<!--            <br/>-->
+
+<!--            <label for="street">Street address: </label>-->
+<!--            <input type="text" th:field="${user.street}"/>-->
+<!--            <br/>-->
+
+<!--            <label for="city">City: </label>-->
+<!--            <input type="text" th:field="${user.city}"/>-->
+<!--            <br/>-->
+
+<!--            <h3>Payment Information</h3>-->
+<!--            <label for="ccNumber">Credit Card #: </label>-->
+<!--            <input type="text" th:field="${user.ccNumber}"/>-->
+<!--            <span class="validationError"-->
+<!--                  th:if="${#fields.hasErrors('ccNumber')}"-->
+<!--                  th:errors="*{ccNumber}">Invalid Credit Card</span>-->
+<!--            <br/>-->
+
+<!--            <label for="ccExpiration">Expiration: </label>-->
+<!--            <input type="text" th:field="${user.ccExpiration}"/>-->
+<!--            <br/>-->
+
+<!--            <label for="ccCVV">CVV: </label>-->
+<!--            <input type="text" th:field="${user.ccCVV}"/>-->
+<!--            <span class="validationError"-->
+<!--                  th:if="${#fields.hasErrors('ccCVV')}"-->
+<!--                  th:errors="*{ccCVV}">CC Num Error</span>-->
+<!--            <br/>-->
+
+<!--            <input type="submit" value="Submit Order"/>-->
+<!--        </form>-->
+
+<!--    </body>-->
+<!--</html>-->
