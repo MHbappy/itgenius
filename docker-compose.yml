@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  itgenuine-container:
+    image: mhbappy18/currency_configure
+    container_name: currency_configure
+    ports:
+      - "8081:8081"
+    volumes:
+      - ./application:/tmp/springboot-docker-compose-app
+    networks:
+      - backend
+
