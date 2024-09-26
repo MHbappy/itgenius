@@ -28,28 +28,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        //Configuration of access to endpoints
-        http.authorizeRequests()
-//            .antMatchers("/actuator/loggers","/actuator/metrics" ).access("hasRole('USER')")
-                .antMatchers("/").permitAll()
-//            .antMatchers("/**").access("hasRole('USER')")
-//            .antMatchers("/", "/**", "*/health").access("permitAll")
-
-            .and()
-            .formLogin()
-            .loginPage("/login")
-
-            .and()
-            .logout()
-            .logoutSuccessUrl("/")
-
-            .and()
-            .csrf()
-//            .ignoringAntMatchers("/h2/**")
-            .and()
-            .headers()
-            .frameOptions()
-            .sameOrigin()
-        ;
+        http
+                .csrf().disable() // Disable CSRF for simplicity
+                .authorizeRequests()
+                .antMatchers("/auth/**", "/css/**", "/js/**", "/", "/img/**").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .permitAll()
+                .and()
+                .logout().permitAll()
+                .and()
+                .sessionManagement()
+                .maximumSessions(1)
+                .maxSessionsPreventsLogin(true);
     }
+
+
+
+
 }

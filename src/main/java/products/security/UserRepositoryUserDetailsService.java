@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import products.entities.User;
 import products.repository.UserRepository;
 
+import java.util.Optional;
+
 @Slf4j
 @Service
 //Our own implementation of how the users are loaded
@@ -21,10 +23,10 @@ public class UserRepositoryUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepo.findByUsername(username);
-        if (user != null) {
+        Optional<User> user = userRepo.findByUsername(username);
+        if (user.isPresent()) {
             log.info("Found user --> " + username );
-            return user;
+            return user.get();
         }
         log.error("User " + username + " not found.. Try again!");
         throw new UsernameNotFoundException("User '" + username + "' not found");
